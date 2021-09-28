@@ -1,6 +1,7 @@
 package com.example.json1;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,11 +29,19 @@ public class DaftarBuahAdapter extends RecyclerView.Adapter<DaftarBuahAdapter.Da
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DaftarBuahHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DaftarBuahHolder holder, final int position) {
         holder.txtNama.setText(buahbuahan.get(position).getNama());
         holder.txtLatin.setText(buahbuahan.get(position).getLatin());
         holder.txtRasa.setText(buahbuahan.get(position).getRasa());
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent pindah = new Intent(activity,DetailActivity.class);
+                Buah a = buahbuahan.get(position);
+                pindah.putExtra("buahnya",a);
+                v.getContext().startActivity(pindah);
+            }
+        });
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.example.json1;
 
-public class Buah {
+import java.io.Serializable;
+
+public class Buah implements Serializable {
     private String nama;
     private String latin;
     private String rasa;
